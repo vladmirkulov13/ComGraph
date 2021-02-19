@@ -1,5 +1,4 @@
 from PIL import Image
-from model import *
 import matplotlib.pyplot as plt
 
 if __name__ == "__main__":
