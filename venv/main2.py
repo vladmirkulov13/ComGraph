@@ -1,7 +1,7 @@
 from PIL import Image
 import math
 import numpy as np
-
+from model3d import Model
 
 # алгоритмы отрисовки прямых из лекций:
 # первый алгоритм:
@@ -127,3 +127,5 @@ if __name__ == "__main__":
     img2.save('image2.png')
     img3.save('image3.png')
     img4.save('imageBuiltByBresenhem.png')
+    a = Model()
+    a.parserOBJ()
