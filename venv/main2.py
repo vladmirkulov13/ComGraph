@@ -3,6 +3,7 @@ import math
 import numpy as np
 from model3d import Model
 
+
 # алгоритмы отрисовки прямых из лекций:
 # первый алгоритм:
 def line1(x0, y0, x1, y1, img, color):
@@ -129,3 +130,35 @@ if __name__ == "__main__":
     img4.save('imageBuiltByBresenhem.png')
     a = Model()
     a.parserOBJ()
+    h, w = 1000, 1000
+    im5 = Image.new('L', (h, w))
+    for i in range(15257):
+        # im5.putpixel((int(50 * a.points[i][0] + 500), int(50 * int(a.points[i][1])) + 500), 255)
+        # im5.putpixel((int(100 * a.points[i][0] + 500), int(100 * int(a.points[i][1])) + 500), 255)
+        # im5.putpixel((int(500 * a.points[i][0] + 500), int(500 * int(a.points[i][1])) + 500), 255)
+        a.points[i][0] = 4000 * a.points[i][0] + 500
+        a.points[i][1] = 4000 * a.points[i][1] + 500
+        im5.putpixel((int(a.points[i][0]), int(a.points[i][1])), 255)
+    im5.save('image5.png')
+    print(a.polyg)
+    h, w = 1000, 1000
+    im6 = Image.new('L', (h, w))
+    print(a.points[a.polyg[i][0] - 1][0])
+    for i in range(30337):
+        j = 0
+        while j <= 2:
+            if j ==2 :
+                x0 = a.points[a.polyg[i][1] - 1][0]
+                y0 = a.points[a.polyg[i][1] - 1][1]
+                x1 = a.points[a.polyg[i][j] - 1][0]
+                y1 = a.points[a.polyg[i][j] - 1][1]
+                line1(int(x0), int(y0), int(x1), int(y1), im6, 255)
+                break
+            x0 = a.points[a.polyg[i][0] - 1][0]
+            y0 = a.points[a.polyg[i][0] - 1][1]
+            x1 = a.points[a.polyg[i][j] - 1][0]
+            y1 = a.points[a.polyg[i][j] - 1][1]
+            j += 1
+            line1(int(x0),int(y0),int(x1),int(y1),im6,255)
+    im6.save('image6.png')
+# im6.save('image6.png')
